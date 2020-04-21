@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Key Sound</title>
-	<link rel="stylesheet" type="text/css" href="mobile.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script type="text/javascript" src="paper-full.js"></script>
     <script type="text/javascript" src="howler.js"></script>
     <script type="text/paperscript" canvas="myCanvas">
@@ -93,6 +93,7 @@
     ] 
 
     document.querySelector("body").addEventListener("click", function(){
+        document.querySelector("h1").classList.remove("display")
         var maxPoint = new Point(view.size.width, view.size.height)
         var randomPoint = Point.random()
         var point = maxPoint * randomPoint
