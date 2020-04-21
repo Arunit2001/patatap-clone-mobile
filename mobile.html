@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Key Sound</title>
+	<link rel="stylesheet" type="text/css" href="mobile.css">
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/javascript" src="howler.js"></script>
+    <script type="text/paperscript" canvas="myCanvas">
+
+    
+
+   
+    var circles = []
+    var colors = ["rgb(134, 143, 152)", "rgb(0, 66, 54)", "rgb(159, 155, 116)", "rgb(105, 200, 205)", "rgb(87, 82, 126)", "rgb(0, 52, 77)", "rgb(122, 26, 87)", "rgb(137, 32, 52)", "rgb(133, 87, 35)", "rgb(96, 54, 24)", "rgb(80, 40, 18)", "rgb(201, 201, 201)", "rgb(178, 162, 150)", "rgb(103, 124, 138)", "rgb(149, 212, 122)", "rgb(82, 204, 206)", "rgb(0, 176, 178)", "rgb(159, 193, 211)", "rgb(104, 143, 173)", "rgb(63, 100, 126)", "rgb(160, 158, 214)", "rgb(111, 84, 149)", "rgb(75, 37, 109)", "rgb(246, 143, 160)", "rgb(242, 98, 121)", "rgb(239, 62, 91)"]
+    var sound = [new Howl({
+        src:['Sounds/bubbles.mp3']
+        }),
+        new Howl({
+        src:['Sounds/clay.mp3']
+        }),
+        new Howl({
+        src:['Sounds/confetti.mp3']
+        }),
+        new Howl({
+        src:['Sounds/corona.mp3']
+        }),
+        new Howl({
+        src:['Sounds/dotted-spiral.mp3']
+        }),
+        new Howl({
+        src:['Sounds/flash-1.mp3']
+        }),
+        new Howl({
+        src:['Sounds/flash-2.mp3']
+        }),
+        new Howl({
+        src:['Sounds/flash-3.mp3']
+        }),
+        new Howl({
+        src:['Sounds/glimmer.mp3']
+        }),
+        new Howl({
+        src:['Sounds/moon.mp3']
+        }),
+        new Howl({
+        src:['Sounds/pinwheel.mp3']
+        }),
+        new Howl({
+        src:['Sounds/piston-1.mp3']
+        }),
+        new Howl({
+        src:['Sounds/piston-2.mp3']
+        }),
+        new Howl({
+        src:['Sounds/piston-3.mp3']
+        }),
+        new Howl({
+        src:['Sounds/prism-1.mp3']
+        }),
+        new Howl({
+        src:['Sounds/prism-2.mp3']
+        }),
+        new Howl({
+        src:['Sounds/prism-3.mp3']
+        }),
+        new Howl({
+        src:['Sounds/splits.mp3']
+        }),
+        new Howl({
+        src:['Sounds/squiggle.mp3']
+        }),
+        new Howl({
+        src:['Sounds/strike.mp3']
+        }),
+        new Howl({
+        src:['Sounds/suspension.mp3']
+        }),
+        new Howl({
+        src:['Sounds/timer.mp3']
+        }),
+        new Howl({
+        src:['Sounds/ufo.mp3']
+        }),
+        new Howl({
+        src:['Sounds/veil.mp3']
+        }),
+        new Howl({
+        src:['Sounds/wipe.mp3']
+        }),
+        new Howl({
+        src:['Sounds/zig-zag.mp3']
+        })
+    ] 
+
+    document.querySelector("body").addEventListener("click", function(){
+        var maxPoint = new Point(view.size.width, view.size.height)
+        var randomPoint = Point.random()
+        var point = maxPoint * randomPoint
+        var no = Math.floor(Math.random() * 26)
+        var myCircle = new Path.Circle(point, 90)
+        myCircle.fillColor = colors[no]
+        circles.push(myCircle)
+        sound[no].play()
+        
+    })
+    function onFrame(event){
+        for(var i=0; i<circles.length; i++){
+            circles[i].fillColor.hue+=1
+            circles[i].scale(.97);
+            if(circles[i].area<1){
+                circles[i].remove()
+                //circles[i].splice(i, 1);
+                //console.log(circles);
+            }
+        }
+    }
+
+           
+    </script>
+</head>
+<body>
+    <h3>Click anywhere on the screen to start playing with sound and animation :)</h3>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>
